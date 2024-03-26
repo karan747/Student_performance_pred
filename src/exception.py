@@ -3,7 +3,7 @@ import sys
 def error_message_detail(error, error_detail:sys):
     _,_,exc_tb = error_detail.exc_info()
     file_name = exc_tb.tb_frame.f_code.co_filename
-    error_message = "Error occured in [{0}] at line [{1}], with the following error: [{3}]". format(
+    error_message = "Error occured in [{0}] at line [{1}], with the following error: \n [{2}]". format(
         file_name, exc_tb.tb_lineno,str(error)
     )
     return error_message
