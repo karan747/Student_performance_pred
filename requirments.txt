@@ -2,5 +2,8 @@ pandas
 numpy
 seaborn
 scikit-learn
+catboost
+xgboost
 dataclasses
+dill
 -e .
