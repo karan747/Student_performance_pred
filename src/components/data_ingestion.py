@@ -42,3 +42,14 @@ class DataIngestion:
         
         except Exception as e:
             raise CustomException(e, sys)
+
+# if __name__ == "__main__":
+#     obj=DataIngestion()
+#     train_pth, test_pth= obj.initiate_data_ingestion()
+
+#     data_trans = DataTransformation()
+#     train_arr,test_arr,_ = data_trans.initiate_data_transformation(train_pth, test_pth)
+
+
+#     mt = ModelTrainer()
+#     print(mt.initiate_model_trainer(train_arr,test_arr))
