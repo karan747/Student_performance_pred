@@ -14,20 +14,19 @@ from src.components.model_trainer import ModelTrainer
 class DataIngestionConfig:
     train_data_path: str=os.path.join('artifacts', "train.csv")
     test_data_path: str=os.path.join('artifacts', "test.csv")
-    raw_data_path: str=os.path.join('artifacts', "data.csv")
+    # raw_data_path: str=os.path.join('artifacts', "data.csv")
 
 class DataIngestion:
     def __init__(self) -> None:
         self.ingestion_config = DataIngestionConfig()
 
-    def initiate_data_ingestion(self):
+    def initiate_data_ingestion(self,df):
         logging.info("Data ingestion initiated")
         try:
-            df = pd.read_csv('E:\Karan_Bais\python\Ml\Projects\student_performance_pred\data\StudentsPerformance.csv')
             logging.info("Reading dataset as dataframe")
 
             os.makedirs(os.path.dirname(self.ingestion_config.train_data_path), exist_ok=True)
-            df.to_csv(self.ingestion_config.raw_data_path, index=False, header=True)
+            # df.to_csv(self.ingestion_config.raw_data_path, index=False, header=True)
             logging.info("data saved to the artifacts folder")
             
             train_set, test_set = train_test_split(df, test_size=0.25, random_state=42)
