@@ -25,7 +25,13 @@ class DataTransformation:
         
         try:
             numeric_columns=["writing_score", "reading_score"]
-            categorical_columns = ['gender','race_ethnicity','parental_level_of_education','lunch','test_preparation_course',]
+            categorical_columns = [
+                    'gender',
+                    'race_ethnicity',
+                    'parental_level_of_education',
+                    'lunch',
+                    'test_preparation_course',]
+            
             num_pipeline =  Pipeline(
                 steps=[
                 ("imputer", SimpleImputer(strategy="median")),
