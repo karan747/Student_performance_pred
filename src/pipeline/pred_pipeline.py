@@ -11,11 +11,18 @@ class PredictPipline:
         pass
     def predict(self, features):
         try:
+            logging.info("loading model and preprocessor files")
+            
             model_path = os.path.join('artifacts', 'model.pkl')
             preprocessor_path  = os.path.join('artifacts', 'preprocessor.pkl')
             model = load_object(file_path=model_path)
             preprocessor = load_object(file_path = preprocessor_path)
+            
+            logging.info("loaded")
+            logging.info("preprocessing")
             data_scaled = preprocessor.transform(features)
+            
+            logging.info("predicting")
             preds = model.predict(data_scaled)
             return preds
         
@@ -53,6 +60,8 @@ class CustomData:
                 "writing_score" : [self.writing_score],
             }
             
+            logging.info("returning the user data for prediction")
             return pd.DataFrame(custom_data_dict)
+            
         except Exception as e:
             raise CustomException(e, sys)
