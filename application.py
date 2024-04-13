@@ -8,7 +8,7 @@ from src.pipeline.training_pipeline import Training_pipeline
 
 application = Flask(__name__)
 
-app= application
+app=application
 
 @app.route('/')
 def index():
