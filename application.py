@@ -35,33 +35,6 @@ def predict_datapoint():
         predict_pipeline = PredictPipline()
         results = predict_pipeline.predict(custom_df)
         return render_template ('home.html', result = results[0])
-    
-@app.route('/upload', methods=['GET','POST'])
-def upload_file():
-    # Check if the POST request has the file part
-    if request.method == 'GET':
-        return render_template('train.html')
-    else:
-        if 'file' not in request.files:
-            return jsonify({'error': 'No file part'})
 
-        file = request.files['file']
-
-        if file.filename == '':
-            return jsonify({'error': 'No selected file'})
-
-        if file and file.filename.endswith('.csv'):
-       
-            df = pd.read_csv(file)
-
-            train = Training_pipeline()
-            r2score = train.Training(df)
-
-            return render_template('train.html', result= r2score)
-        else:
-            return jsonify({'error': 'Invalid file format'})
-        
-
-    
 if __name__ == "__main__":
     app.run(host="0.0.0.0")
